@@ -1,4 +1,5 @@
 import 'package:componentes/src/providers/menu_provider.dart';
+import 'package:componentes/src/utils/icono_string_util.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,12 +14,6 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _lista() {
-    // print(menuProvider.opciones);
-    // menuProvider.cargarData().then((opciones) {
-    //   print('_lista');
-    //   print(opciones);
-    // });
-    //
     return FutureBuilder(
       future: menuProvider.cargarData(),
       initialData: [],
@@ -31,10 +26,6 @@ class HomePage extends StatelessWidget {
         );
       },
     );
-
-    // return ListView(
-    //   children: _listaItems(),
-    // );
   }
 
   List<Widget> _listaItems(List<dynamic> data) {
@@ -42,10 +33,7 @@ class HomePage extends StatelessWidget {
     data.forEach((opt) {
       final widgetTemp = ListTile(
         title: Text(opt['texto']),
-        leading: Icon(
-          Icons.account_circle,
-          color: Colors.blue,
-        ),
+        leading: getIcon(opt['icon']),
         trailing: Icon(
           Icons.keyboard_arrow_right,
           color: Colors.blue,
