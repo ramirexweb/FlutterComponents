@@ -9,7 +9,13 @@ class CardPage extends StatelessWidget {
       ),
       body: ListView(
         padding: EdgeInsets.all(10.0),
-        children: [_cardTipo1()],
+        children: [
+          _cardTipo1(),
+          SizedBox(
+            height: 30.0,
+          ),
+          _cardTipo2()
+        ],
       ),
     );
   }
@@ -31,6 +37,26 @@ class CardPage extends StatelessWidget {
               TextButton(onPressed: () {}, child: Text('Ok'))
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _cardTipo2() {
+    return Card(
+      child: Column(
+        children: [
+          FadeInImage(
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            image: NetworkImage(
+                'https://www.pandotrip.com/wp-content/uploads/2016/07/li-Photo-by-Santo.jpg'),
+            fadeInDuration: Duration(milliseconds: 200),
+            height: 300.0,
+            fit: BoxFit.cover,
+          ),
+          Container(
+              padding: EdgeInsets.all(10.0),
+              child: Text('No tengo idea de que poner'))
         ],
       ),
     );
